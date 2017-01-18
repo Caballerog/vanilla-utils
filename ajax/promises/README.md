@@ -15,11 +15,11 @@ ajax({
 
 **Parameters:**
 
-url -> The URL string.
-type -> The method HTTP.
-[parse] -> Boolean. Default to false. If you set this to true, the JSON obtained will be parsed.
-[async] -> Boolean. Default to true (false makes a synchronous call).
-[data] -> Object with the data to send.
+- `url` -> The URL string.
+- `type` -> The method HTTP.
+- `[parse]` -> Boolean. Default to false. If you set this to true, the JSON obtained will be parsed.
+- `[async]` -> Boolean. Default to true (false makes a synchronous call).
+- `[data]` -> Object with the data to send.
 
 Another example using more parameters would be like this:
 
