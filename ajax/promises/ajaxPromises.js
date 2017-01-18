@@ -4,15 +4,13 @@ const ajax = function (conf) {
 
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState == 4) {
-                if (xmlhttp.status == 200 && conf.success)
+                if (xmlhttp.status == 200)
                     resolve(conf.parse ? JSON.parse(xmlhttp.responseText) : xmlhttp.responseText);
                 else
                     reject(xmlhttp.status, xmlhttp.statusText);
             }
         };
-
         let sent = null;
-
         if (conf.data) {
             const data = [];
             for (let i in conf.data)
@@ -20,15 +18,8 @@ const ajax = function (conf) {
 
             conf.type === 'GET' ? conf.url += '?' + data.join('&') : sent = data.join('&');
         }
-
         xmlhttp.open(conf.type, conf.url, conf.async === undefined || conf.async);
-
         if (sent) xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
         xmlhttp.send(sent);
     });
 }
-
-ajax()
-    .then(fullfilled => console.log(fullfilled))
-    .catch((status, statusText) => console.log('status ' + status + ', statusText ' + statusText));
